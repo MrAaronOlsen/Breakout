@@ -79,6 +79,7 @@ class Collider {
       manifold.setPenetration(ball.rad - distance);
       manifold.setContactNormal(normal);
       manifold.setContactPoint(point);
+      manifold.setContactType("point");
 
       return manifold;
     }
@@ -100,6 +101,7 @@ class Collider {
 
         let distanceToContact = edge.unit().times(thread.dot(edge.unit()));
         manifold.setContactPoint(start.minus(distanceToContact));
+        manifold.setContactType("edge");
 
         return manifold;
       }

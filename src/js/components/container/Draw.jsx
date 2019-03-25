@@ -29,9 +29,9 @@ class Draw extends Component {
 
     this.collider = new Collider(this.width, this.height, this)
 
-    var ballPos = new Vector(this.width / 2, this.height - 100);
+    var ballPos = new Vector(this.width / 2 + 40, this.height - 80);
     this.ball = new Ball(ballPos, 10);
-    this.ball.setVel(new Vector(3, 3));
+    this.ball.setVel(new Vector(0, 5));
 
     var paddlePos = new Vector(this.width/2, this.height - 30);
     this.paddle = new Paddle(paddlePos);
@@ -66,7 +66,7 @@ class Draw extends Component {
 
     let manifold = this.collider.queryRectBall(this.paddle, this.ball);
     if (manifold != null) {
-      Resolver.resolve_paddle(manifold, this.paddle, this.ball);
+      Resolver.resolve_paddle(manifold, this.paddle, this.ball, this.ctx);
     }
 
     this.board.layout.forEach(row => {

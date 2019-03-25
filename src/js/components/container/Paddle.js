@@ -15,6 +15,19 @@ class Paddle extends Rect {
     return this.pos.plus(new Vector(this.width / 2, 0))
   }
 
+  getNormal(contactPoint) {
+    var diff = contactPoint.x - this.pos.x;
+    var third = this.width / 3;
+
+    if (diff < third) {
+      return new Vector(-0.196, -0.981);
+    } else if (diff >= third && diff <= third * 2) {
+      return new Vector(0, -1);
+    } else if (diff > third * 2){
+      return new Vector(0.196, -0.981);
+    }
+  }
+
   draw(ctx) {
     ctx.beginPath();
     ctx.rect(this.pos.x, this.pos.y, this.width, this.height);
@@ -24,7 +37,7 @@ class Paddle extends Rect {
   }
 
   update() {
-    this.vel.mult(0.92);
+    this.vel.mult(0.90);
     this.pos.add(this.vel);
 
     if (this.vel.x > 7) {

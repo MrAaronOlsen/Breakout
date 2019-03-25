@@ -8,6 +8,7 @@ class Manifold {
     this.contactNormal = null;
     this.contactPoint = null;
     this.contact = false;
+    this.contactType = null;
   }
 
   setPenetration(penetration) {
@@ -20,6 +21,10 @@ class Manifold {
 
   setContactPoint(point) {
     this.contactPoint = point;
+  }
+
+  setContactType(contactType) {
+    this.contactType = contactType;
   }
 
   setContact() {
